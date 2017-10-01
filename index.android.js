@@ -27,7 +27,18 @@ import ReviewScreen from './screens/ReviewScreen';
 
 const ViewJobs = TabNavigator({
   Welcome: { screen: WelcomeScreen },
-  Auth: { screen: AuthScreen},
+  auth: { screen: AuthScreen},
+  main: {
+    screen: TabNavigator({
+        map: { screen: MapScreen },
+        deck: { screen: DeckScreen },
+    })
+  }
+}, {
+  navigationOptions: {
+    tabBarVisible: false
+  },
+  lazy: true
 });
 class Jobs extends Component {
   render() {

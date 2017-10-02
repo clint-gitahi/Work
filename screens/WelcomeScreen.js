@@ -30,8 +30,8 @@ class WelcomeScreen extends Component {
   render() {
     if (_.isNull(this.state.token)) {
       return (
-        <View style={{ justifyContent: 'center', alignItems: 'center'}}>
-          <ActivityIndicator />
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <ActivityIndicator size="large" />
         </View>
       );
     }

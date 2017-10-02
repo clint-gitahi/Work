@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
+import * as actions from '../actions';
 
 import Swipe from '../components/Swipe'
 
@@ -27,7 +28,7 @@ class DeckScreen extends Component {
           </MapView>
         </View>
 
-        <View>
+        <View style={styles.detailWrapper}>
           <Text>{job.company}</Text>
           <Text>{job.formattedRelativeTime}</Text>
         </View>
@@ -60,6 +61,7 @@ class DeckScreen extends Component {
           renderCard={this.renderCard}
           renderNoMoreCards={this.renderNoMoreCards}
           keyProp="jobkey"
+          onSwipeRight={job => this.props.likeJob(job)}
         />
       </View>
     )
@@ -69,7 +71,7 @@ class DeckScreen extends Component {
 const styles = {
   detailWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-aroud',
+    justifyContent: 'space-around',
     marginBottom : 10
   }
 }
@@ -77,7 +79,7 @@ const styles = {
 function mapStateToProps({ jobs }) {
   return {
     jobs: jobs.results
-  }
+  };
 }
 
-export default connect(mapStateToProps)(DeckScreen);
+export default connect(mapStateToProps, actions)(DeckScreen);

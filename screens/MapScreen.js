@@ -7,11 +7,21 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements';
+import { Button, Card, Icon } from 'react-native-elements';
 
 import * as actions from '../actions';
 
 class MapScreen extends Component {
+  // static navigationOptions = {
+  //   title: 'Map',
+  //   tabBar: {
+  //     icon: ({ tintColor }) => {
+  //       return <Icon name="my-location" size={30} color={tintColor} />;
+  //     }
+  //   }
+  // }
+
+
   state = {
     mapLoaded: false,
     region: {
@@ -26,7 +36,6 @@ class MapScreen extends Component {
   }
 
   onRegionChange = (region) => {
-    console.log(region);
     this.setState({ region })
   }
 

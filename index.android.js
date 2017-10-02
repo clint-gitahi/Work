@@ -24,6 +24,10 @@ import DeckScreen from './screens/DeckScreen';
 import SettingScreen from './screens/SettingScreen';
 import ReviewScreen from './screens/ReviewScreen';
 
+const rout = StackNavigator({
+    review: { screen: ReviewScreen },
+    settings: { screen: SettingScreen }
+  })
 
 const ViewJobs = TabNavigator({
   Welcome: { screen: WelcomeScreen },
@@ -32,11 +36,13 @@ const ViewJobs = TabNavigator({
     screen: TabNavigator({
         map: { screen: MapScreen },
         deck: { screen: DeckScreen },
+        review: { screen: rout }
     })
   }
 }, {
   navigationOptions: {
     tabBarVisible: false
+
   },
   lazy: true
 });
